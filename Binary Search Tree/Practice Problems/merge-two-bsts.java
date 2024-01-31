@@ -1,28 +1,3 @@
-/*********************************************************
-
- Following is the TreeNode structure:
-
- class TreeNode {
-     int data;
-     TreeNode left;
-     TreeNode right;
-     TreeNode() {
-         this.data = 0;
-         this.left = null;
-         this.right = null;
-     }
-     TreeNode(int val) {
-         this.data = val;
-         this.left = null;
-         this.right = null;
-     }
-     TreeNode(int val, TreeNode left, TreeNode right) {
-         this.data = val;
-         this.left = left;
-         this.right = right;
-     }
- };
- ********************************************************/
 
 import java.util.*;
 public class Solution {
@@ -56,4 +31,26 @@ public class Solution {
         return ans;
 
     }
+}
+
+//brute force
+
+import java.util.*;
+// import java.util.Collections;
+public class Solution {
+    public static List<Integer> mergeBST(TreeNode root1, TreeNode root2) {
+        // Write your code here.
+        List<Integer> ans=new ArrayList<>();
+        solve(root1, ans);
+        solve(root2, ans);
+        Collections.sort(ans);
+        return ans;
+    }
+    private static void solve(TreeNode root, List<Integer> ans){
+        if(root.left!=null)solve(root.left, ans);
+        ans.add(root.data);
+        if(root.right!=null)solve(root.right, ans);
+    }
+
+    
 }
